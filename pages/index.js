@@ -1,4 +1,4 @@
-import Chart from "../components/chart";
+import Chart from "../components/Chart";
 import { useState } from "react";
 
 const initialScore = {
