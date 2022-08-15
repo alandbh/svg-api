@@ -13,7 +13,7 @@ const result = {
 const chartWidth = 400;
 
 export default function chartService(req) {
-    const { g1, g2, g3 = 2, g4 = 2, r = 2 } = req;
+    const { g1 = 1, g2 = 1, g3 = 1, g4 = 1, r = 1 } = req;
 
     function getOpacity(score) {
         if (!score || score < 1) {
