@@ -17,6 +17,7 @@ const initialScoreResult = {
 export default function App() {
     const [score, setScore] = useState({ ...initialScore });
     const [scoreResult, setScoreResult] = useState({ ...initialScoreResult });
+    const [decimal, setDecimal] = useState(0);
 
     function handleChangeRange(ev, scoreNumber) {
         let newScore = { ...score };
@@ -64,6 +65,20 @@ export default function App() {
         }, 2500);
     }
 
+    function getGCoord(axis, score) {
+        const axisMapping = {
+            g1x: chartWidth / 2 - ((chartWidth / 2) * score) / 4,
+            g1y: chartWidth / 2 - ((chartWidth / 2) * score) / 4,
+            g2x: ((chartWidth / 2) * score) / 4 + chartWidth / 2,
+            g2y: chartWidth / 2 - (chartWidth / 2 / 4) * score,
+            g3x: ((chartWidth / 2) * score) / 4 + chartWidth / 2,
+            g3y: chartWidth / 2 + (chartWidth / 2 / 4) * score,
+            g4x: chartWidth / 2 - ((chartWidth / 2) * score) / 4,
+            g4y: chartWidth / 2 + (chartWidth / 2 / 4) * score,
+        };
+        return axisMapping[axis].toFixed(2);
+    }
+
     return (
         <div className="App">
             <div className="chartWrapper">
@@ -84,6 +99,7 @@ export default function App() {
                     className="svgWrapper"
                 >
                     <Chart
+                        generate={decimal}
                         score={score}
                         result={scoreResult}
                         width={chartWidth}
@@ -111,7 +127,7 @@ export default function App() {
                         type="range"
                         min="1"
                         max="4"
-                        step="1"
+                        step="0.1"
                         value={score.score1}
                     />
                     <small>(score: {score.score1})</small>
@@ -121,7 +137,7 @@ export default function App() {
                         type="range"
                         min="1"
                         max="4"
-                        step="1"
+                        step="0.1"
                         value={score.score2}
                     />
                     <small>(score: {score.score2})</small>
@@ -131,7 +147,7 @@ export default function App() {
                         type="range"
                         min="1"
                         max="4"
-                        step="1"
+                        step="0.1"
                         value={score.score3}
                     />
                     <small>(score: {score.score3})</small>
@@ -191,6 +207,21 @@ export default function App() {
                     <small>(score: {scoreResult.score4})</small>
                     <br />
                 </div>
+            </div>
+
+            <div>
+                <h1>{decimal}</h1>
+                <h1>g2x: {getGCoord("g2x", decimal)}</h1>
+                <h1>g2y: {getGCoord("g2y", decimal)}</h1>
+
+                <input
+                    onChange={(ev) => setDecimal(ev.target.value)}
+                    type="range"
+                    min="0"
+                    max="4"
+                    step="0.1"
+                    value={decimal}
+                />
             </div>
         </div>
     );

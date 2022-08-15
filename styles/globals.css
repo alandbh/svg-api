@@ -61,7 +61,7 @@ svg {
 }
 
 svg path {
-  transition: 0.3s ease-in-out;
+  transition: 0.03s ease-in-out;
 }
 
 .chartWrapper {

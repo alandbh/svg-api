@@ -2,7 +2,7 @@ import { useEffect } from "react";
 let widthTimeout;
 let squareWidth;
 
-export default function Chart({ score, result, width }) {
+export default function Chart({ generate, score, result, width }) {
     squareWidth = width;
     useEffect(() => {
         clearTimeout(widthTimeout);
@@ -68,6 +68,24 @@ export default function Chart({ score, result, width }) {
         stroke = "#000000";
     }
 
+    function getGCoord(quadrant, score) {
+        const quadrantMapping = {
+            g1: `${width / 2 - ((width / 2) * score) / 4} ${
+                width / 2 - (width / 2 / 4) * score
+            }`,
+            g2: `${((width / 2) * score) / 4 + width / 2} ${
+                width / 2 - (width / 2 / 4) * score
+            }`,
+            g3: `${((width / 2) * score) / 4 + width / 2} ${
+                width / 2 + (width / 2 / 4) * score
+            }`,
+            g4: `${width / 2 - ((width / 2) * score) / 4} ${
+                width / 2 + (width / 2 / 4) * score
+            }`,
+        };
+        return quadrantMapping[quadrant];
+    }
+
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -88,11 +106,13 @@ export default function Chart({ score, result, width }) {
                 <path
                     fill={fill}
                     stroke={stroke}
-                    d={`M ${scoreMap.score1[score.score1]} L ${
-                        scoreMap.score2[score.score2]
-                    } L ${scoreMap.score3[score.score3]} L ${
-                        scoreMap.score4[score.score4]
-                    } L ${scoreMap.score1[score.score1]} Z`}
+                    d={`M ${getGCoord("g1", score.score1)} L ${getGCoord(
+                        "g2",
+                        score.score2
+                    )} L ${getGCoord("g3", score.score3)} L ${getGCoord(
+                        "g4",
+                        score.score4
+                    )} L ${getGCoord("g1", score.score1)} Z`}
                 ></path>
             </mask>
             <g mask="url(#mask0_395_5)">
