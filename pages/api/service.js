@@ -6,7 +6,7 @@ export default function chartService(req) {
         g4 = 1,
         r = 1,
         size = 326,
-        bg = "797",
+        bg = "777",
     } = req;
     // const chartWidth = size;
 
