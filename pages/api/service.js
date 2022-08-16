@@ -49,7 +49,12 @@ export default function chartService(req) {
     }
 
     function dx(score) {
-        return String(score).length > 1 ? -7 : 0;
+        if (String(score).length === 3) {
+            return -8;
+        } else if (String(score).length === 4) {
+            return -12;
+        }
+        return 0;
     }
 
     const svgElement = `
