@@ -117,7 +117,7 @@ export default function Chart({ generate, score, result, width }) {
             </mask>
             <g mask="url(#mask0_395_5)">
                 <path
-                    fill="#666"
+                    fill="#999"
                     d={`M0 0H ${squareWidth} V ${squareWidth} H0z`}
                 ></path>
                 <g fill="red" filter="url(#filter0_f_395_5)">
