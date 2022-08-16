@@ -154,7 +154,7 @@ export default function chartService(req) {
     )} L ${getGCoord("g4", g4)} L ${getGCoord(
         "g1",
         g1
-    )} Z" fill="#FF0303" fill-opacity="0.7"/>
+    )} Z" fill="#FF0303" fill-opacity="${getOpacity(r)}"/>
 </g>
 <defs>
 <clipPath id="clip0_452_200">
