@@ -6,22 +6,14 @@ export default function chartService(req) {
         g4 = 1,
         r = 1,
         size = 326,
-        bg = "777",
+        bg = "797",
     } = req;
     // const chartWidth = size;
 
     function getOpacity(score) {
-        if (!score || score < 1) {
+        if (!score || score <= 1) {
             return 0;
         } else if (score > 4) {
-            return 1;
-        } else if (score >= 1 && score <= 1.6) {
-            return 0;
-        } else if (score > 1.6 && score <= 2.4) {
-            return 0.3;
-        } else if (score > 2.4 && score <= 3.4) {
-            return 0.75;
-        } else if (score > 3.4 && score <= 4) {
             return 1;
         }
 
@@ -154,7 +146,7 @@ export default function chartService(req) {
     <path d="M ${getGCoord("g1", g1)} L ${getGCoord("g2", g2)} L ${getGCoord(
         "g3",
         g3
-    )} L ${getGCoord("g4", g4)} L ${getGCoord("g1", g1)} Z" fill="#9C9C9C"/>
+    )} L ${getGCoord("g4", g4)} L ${getGCoord("g1", g1)} Z" fill="#${bg}"/>
     <path d="M ${getGCoord("g1", g1)} L ${getGCoord("g2", g2)} L ${getGCoord(
         "g3",
         g3
