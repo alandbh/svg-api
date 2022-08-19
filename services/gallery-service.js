@@ -9,7 +9,8 @@ export default function galleryService(req) {
         bg = "ccc",
         red = "ff0000",
     } = req;
-    // const chartWidth = size;
+
+    const halfSquare = size / 2;
 
     function getOpacity(score) {
         if (!score || score <= 1) {
@@ -20,8 +21,6 @@ export default function galleryService(req) {
 
         return score / 4;
     }
-
-    const halfSquare = size / 2;
 
     function getGCoord(quadrant) {
         let score = req[quadrant];
@@ -69,9 +68,9 @@ export default function galleryService(req) {
     )} Z" fill="#${red}" fill-opacity="${getOpacity(r)}"/>
     </g>
     <rect width="3" height="3" fill="black"/>
-    <rect x="217" width="3" height="3" fill="black"/>
-    <rect x="217" y="217" width="3" height="3" fill="black"/>
-    <rect y="217" width="3" height="3" fill="black"/>
+    <rect x="${size - 3}" width="3" height="3" fill="black"/>
+    <rect x="${size - 3}" y="${size - 3}" width="3" height="3" fill="black"/>
+    <rect y="${size - 3}" width="3" height="3" fill="black"/>
     <defs>
     <clipPath id="clip0_464_380">
     <rect width="${size}" height="${size}" fill="white" transform="translate(${size}) rotate(90)"/>

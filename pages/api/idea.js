@@ -1,8 +1,6 @@
-import chartService from "./idea-service.js";
+import chartService from "../../services/idea-service.js";
 
-export default function handler(req, res) {
-    console.log(req.query);
+export default function handlerIdea(req, res) {
     res.setHeader("content-type", "image/svg+xml");
-
     res.status(200).send(chartService(req.query));
 }

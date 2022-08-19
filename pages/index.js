@@ -82,6 +82,7 @@ export default function App() {
     return (
         <div className="App">
             <div className="chartWrapper">
+                <h3>⚠️ This approach is no longer accepted</h3>
                 <div className="width-wrapper">
                     <label htmlFor="chartWidth">Chart Width:</label>
                     <div>
@@ -207,21 +208,6 @@ export default function App() {
                     <small>(score: {scoreResult.score4})</small>
                     <br />
                 </div>
-            </div>
-
-            <div>
-                <h1>{decimal}</h1>
-                <h1>g2x: {getGCoord("g2x", decimal)}</h1>
-                <h1>g2y: {getGCoord("g2y", decimal)}</h1>
-
-                <input
-                    onChange={(ev) => setDecimal(ev.target.value)}
-                    type="range"
-                    min="0"
-                    max="4"
-                    step="0.1"
-                    value={decimal}
-                />
             </div>
         </div>
     );
